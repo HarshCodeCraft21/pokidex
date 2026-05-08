@@ -87,11 +87,19 @@ pokemonType();
 
 filterBySelect.addEventListener("change", (e) => {
     let pokeType = e.target.value;
+    if (pokeType === "All Pokemon") {
+        ShowData(pokemonAbility);
+
+        return
+    }
     let result = pokemonAbility.filter(res => res.types[0].type.name.includes(pokeType));
 
     if (result.length === 0) {
-        ShowData(pokemonAbility);
         alert("This type of pokemon not found");
+        e.target.value = "All Pokemon";
+        ShowData(pokemonAbility);
+
+        return;
     }
 
     ShowData(result);
