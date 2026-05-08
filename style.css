@@ -8,9 +8,9 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #f5f5f5;
   padding: 15px;
 }
@@ -18,7 +18,7 @@ body {
 /* MAIN CONTAINER */
 
 .outer-card {
-  height: calc(100vh - 30px);
+  min-height: calc(100vh - 30px);
 
   display: flex;
   gap: 20px;
@@ -64,46 +64,61 @@ body {
   border-radius: 20px;
 }
 
+/* CARD */
+
 .left-card .card {
   background-color: transparent;
-  /* min-height: 250px;
-  width: 100%; */
   width: 100%;
   height: 300px;
   border-radius: 10px;
   padding: 15px;
   perspective: 1000px;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
-  transition: all .5s;
+  transition: all 0.5s;
 }
+
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
+
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
+
 .flip-card-front,
 .flip-card-back {
   position: absolute;
+
   width: 100%;
   height: 100%;
+
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-}
-.flip-card-front {
-  background-color:white;
-  color: black;
+
   border-radius: 10px;
+}
+
+.flip-card-front {
+  background-color: white;
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .flip-card-back {
@@ -111,17 +126,25 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
   gap: 10px;
+
   background-color: #2980b9;
   color: white;
+
   transform: rotateY(180deg);
 }
+
 .pokemon-image {
   width: 100%;
   max-width: 150px;
   object-fit: contain;
   aspect-ratio: 1;
 }
+
+/* ========================= */
+/* RIGHT CARD */
+/* ========================= */
 
 .right-card {
   background-color: rgba(226, 100, 100, 0.9);
@@ -144,6 +167,8 @@ body {
   text-align: center;
 }
 
+/* FILTERS */
+
 .filter-section {
   width: 100%;
 
@@ -155,16 +180,7 @@ body {
   gap: 15px;
 }
 
-.filter-cards,
-.search-input input {
-  width: 250px;
-  max-width: 100%;
-  height: 45px;
-
-  border: none;
-  border-radius: 5px;
-  padding: 0 12px;
-}
+/* SEARCH */
 
 .search-input {
   width: 100%;
@@ -179,17 +195,37 @@ body {
   margin-top: auto;
 }
 
+/* INPUTS */
+
+.filter-cards,
+.search-input input {
+  width: 250px;
+  max-width: 100%;
+  height: 45px;
+
+  border: none;
+  border-radius: 5px;
+
+  padding: 0 12px;
+}
+
+/* ICONS */
+
 .filter-section i,
 .search-input i {
   font-size: 40px;
   color: white;
 }
 
+/* HEADINGS */
+
 .filter-section h2,
 .search-input h2 {
   font-size: 28px;
   color: white;
 }
+
+/* BUTTON */
 
 .load-more-btn {
   height: 42px;
@@ -209,6 +245,10 @@ body {
   transform: scale(0.95);
   background-color: #303030;
 }
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
 
 @media (max-width: 992px) {
   body {
@@ -245,21 +285,28 @@ body {
   }
 
   .outer-card {
+    flex-direction: column;
     padding: 15px;
     gap: 15px;
   }
 
+  /* CONTROLLERS TOP */
+
+  .right-card {
+    order: -1;
+    padding: 15px;
+  }
+
+  /* CARDS DOWN */
+
   .left-card {
     grid-template-columns: 1fr;
     padding: 15px;
+    max-height: unset;
   }
 
   .left-card .card {
     min-height: 220px;
-  }
-
-  .right-card {
-    padding: 15px;
   }
 
   .title {
